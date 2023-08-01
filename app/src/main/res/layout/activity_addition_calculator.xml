@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="0"
+                android:textColor="#FF3D9C48"
+                android:textSize="34sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingRight="20dp">
+
+            <Button
+                android:id="@+id/btn_add_25"
+                style="@style/Widget.AppCompat.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:onClick="onAdd25Clicked"
+                android:padding="8dp"
+                android:text="+25"
+                android:textColor="#555555"
+                android:textSize="34sp" />
+
+            <TextView
+                android:id="@+id/divider1"
+                android:layout_width="1dp"
+                android:layout_height="40sp"
+                android:layout_weight="1"
+                android:background="#555555" />
+
+            <Button
+                android:id="@+id/btn_add_100"
+                style="@style/Widget.AppCompat.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:onClick="onAdd100Clicked"
+                android:padding="8dp"
+                android:text="+100"
+                android:textColor="#555555"
+                android:textSize="34sp" />
+
+            <TextView
+                android:id="@+id/divider2"
+                android:layout_width="1dp"
+                android:layout_height="40sp"
+                android:layout_weight="1"
+                android:background="#555555" />
+
+            <Button
+                android:id="@+id/btn_remove_25"
+                style="@style/Widget.AppCompat.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:onClick="onRemove25Clicked"
+                android:padding="8dp"
+                android:text="-25"
+                android:textColor="#555555"
+                android:textSize="34sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
