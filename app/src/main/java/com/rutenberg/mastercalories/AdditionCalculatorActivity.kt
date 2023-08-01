@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -51,19 +50,19 @@ class AdditionCalculatorActivity : AppCompatActivity() {
         sendBroadcast(intent)
     }
 
-    fun onAdd25Clicked(view: View) {
+    fun onAdd25Clicked() {
         val amount = getAmount() + 25
         setAmount(amount)
         updateAmount(amount)
     }
 
-    fun onAdd100Clicked(view: View) {
+    fun onAdd100Clicked() {
         val amount = getAmount() + 100
         setAmount(amount)
         updateAmount(amount)
     }
 
-    fun onRemove25Clicked(view: View) {
+    fun onRemove25Clicked() {
         val amount = getAmount() - 25
         setAmount(amount)
         updateAmount(amount)
