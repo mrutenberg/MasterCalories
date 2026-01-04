@@ -4,4 +4,8 @@
     <string name="reset_time_label">Daily reset time</string>
     <string name="save">Save</string>
     <string name="reset_time_saved">Reset time saved</string>
+    <string name="edit_count_title">Edit count</string>
+    <string name="edit_count_hint">Enter new count</string>
+    <string name="confirm">Confirm</string>
+    <string name="invalid_count">Please enter a valid number</string>
 </resources>

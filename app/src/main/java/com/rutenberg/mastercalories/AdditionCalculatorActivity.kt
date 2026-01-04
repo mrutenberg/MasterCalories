@@ -7,10 +7,14 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
+import android.widget.EditText
 import android.widget.TextView
 import android.view.View
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 class AdditionCalculatorActivity : AppCompatActivity() {
 
@@ -22,6 +26,7 @@ class AdditionCalculatorActivity : AppCompatActivity() {
 
         amountTextView = findViewById(R.id.tv_amount)
         updateAmount(getAmount())
+        amountTextView.setOnClickListener { showEditAmountDialog() }
 
         MidnightResetReceiver.schedule(applicationContext)
     }
@@ -82,6 +87,30 @@ class AdditionCalculatorActivity : AppCompatActivity() {
 
     private fun updateAmount(amount: Int) {
         amountTextView.text = amount.toString()
+    }
+
+    private fun showEditAmountDialog() {
+        val input = EditText(this).apply {
+            inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_SIGNED
+            setText(getAmount().toString())
+            setSelection(text.length)
+            hint = getString(R.string.edit_count_hint)
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle(R.string.edit_count_title)
+            .setView(input)
+            .setPositiveButton(R.string.confirm) { _, _ ->
+                val newAmount = input.text.toString().trim().toIntOrNull()
+                if (newAmount == null) {
+                    Toast.makeText(this, R.string.invalid_count, Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
+                }
+                setAmount(newAmount)
+                updateAmount(newAmount)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     override fun onResume() {
