@@ -55,30 +55,35 @@ class AdditionCalculatorActivity : AppCompatActivity() {
         sendBroadcast(intent)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onAdd25Clicked(view: View) {
         val amount = getAmount() + 25
         setAmount(amount)
         updateAmount(amount)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onAdd100Clicked(view: View) {
         val amount = getAmount() + 100
         setAmount(amount)
         updateAmount(amount)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onRemove25Clicked(view: View) {
         val amount = getAmount() - 25
         setAmount(amount)
         updateAmount(amount)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onRemove100Clicked(view: View) {
         val amount = getAmount() - 100
         setAmount(amount)
         updateAmount(amount)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onResetClicked(view: View) {
         val amount = 0
         setAmount(amount)
