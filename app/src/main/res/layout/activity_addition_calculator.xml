@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/header_controls"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:gravity="center_vertical"
@@ -93,4 +94,44 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_controls"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/btn_reset_count"
+            style="@style/Widget.AppCompat.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:onClick="onResetClicked"
+            android:padding="8dp"
+            android:text="Reset"
+            android:textColor="#555555"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/divider3"
+            android:layout_width="1dp"
+            android:layout_height="32sp"
+            android:layout_marginHorizontal="8dp"
+            android:background="#555555" />
+
+        <Button
+            android:id="@+id/btn_remove_100"
+            style="@style/Widget.AppCompat.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:onClick="onRemove100Clicked"
+            android:padding="8dp"
+            android:text="-100"
+            android:textColor="#555555"
+            android:textSize="24sp" />
+    </LinearLayout>
 </RelativeLayout>

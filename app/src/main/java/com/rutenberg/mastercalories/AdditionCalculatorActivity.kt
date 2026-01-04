@@ -68,6 +68,18 @@ class AdditionCalculatorActivity : AppCompatActivity() {
         updateAmount(amount)
     }
 
+    fun onRemove100Clicked(view: View) {
+        val amount = getAmount() - 100
+        setAmount(amount)
+        updateAmount(amount)
+    }
+
+    fun onResetClicked(view: View) {
+        val amount = 0
+        setAmount(amount)
+        updateAmount(amount)
+    }
+
     private fun updateAmount(amount: Int) {
         amountTextView.text = amount.toString()
     }
