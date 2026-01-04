@@ -23,6 +23,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_title" />
 
         <receiver
             android:name=".AdditionCalculatorWidget"

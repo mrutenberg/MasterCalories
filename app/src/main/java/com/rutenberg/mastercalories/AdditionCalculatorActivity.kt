@@ -8,10 +8,9 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import android.app.AlarmManager
-import android.app.PendingIntent
-import java.util.Calendar
 import android.view.View
+import android.view.Menu
+import android.view.MenuItem
 
 class AdditionCalculatorActivity : AppCompatActivity() {
 
@@ -24,7 +23,7 @@ class AdditionCalculatorActivity : AppCompatActivity() {
         amountTextView = findViewById(R.id.tv_amount)
         updateAmount(getAmount())
 
-        scheduleMidnightReset()
+        MidnightResetReceiver.schedule(applicationContext)
     }
 
     private fun getPrefs(): SharedPreferences {
@@ -78,26 +77,19 @@ class AdditionCalculatorActivity : AppCompatActivity() {
         updateAmount(getAmount())
     }
 
-    private fun scheduleMidnightReset() {
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(this, MidnightResetReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_addition_calculator, menu)
+        return true
+    }
 
-        val calendar = Calendar.getInstance().apply {
-            timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, 0)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-            add(Calendar.DAY_OF_MONTH, 1) // Schedule for the next day
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-
-        alarmManager.setInexactRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            pendingIntent
-        )
     }
 
 }
