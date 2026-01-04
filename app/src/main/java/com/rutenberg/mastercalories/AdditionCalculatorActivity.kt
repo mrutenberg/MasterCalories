@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.app.AlarmManager
 import android.app.PendingIntent
 import java.util.Calendar
+import android.view.View
 
 class AdditionCalculatorActivity : AppCompatActivity() {
 
@@ -50,19 +51,19 @@ class AdditionCalculatorActivity : AppCompatActivity() {
         sendBroadcast(intent)
     }
 
-    fun onAdd25Clicked() {
+    fun onAdd25Clicked(view: View) {
         val amount = getAmount() + 25
         setAmount(amount)
         updateAmount(amount)
     }
 
-    fun onAdd100Clicked() {
+    fun onAdd100Clicked(view: View) {
         val amount = getAmount() + 100
         setAmount(amount)
         updateAmount(amount)
     }
 
-    fun onRemove25Clicked() {
+    fun onRemove25Clicked(view: View) {
         val amount = getAmount() - 25
         setAmount(amount)
         updateAmount(amount)
