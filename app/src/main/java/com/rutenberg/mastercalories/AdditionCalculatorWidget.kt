@@ -17,6 +17,8 @@ class AdditionCalculatorWidget : AppWidgetProvider() {
         private const val REMOVE_25_ACTION = "com.rutenberg.REMOVE_25"
         private const val PREFS_NAME = "com.rutenberg.mastercalories.AdditionCalculatorWidget"
         private const val KEY_AMOUNT = "amount"
+        private const val KEY_RESET_HOUR = "reset_hour"
+        private const val KEY_RESET_MINUTE = "reset_minute"
 
         fun getSharedPrefsName(): String {
             return PREFS_NAME
@@ -24,6 +26,14 @@ class AdditionCalculatorWidget : AppWidgetProvider() {
 
         fun getAmountKey(): String {
             return KEY_AMOUNT
+        }
+
+        fun getResetHourKey(): String {
+            return KEY_RESET_HOUR
+        }
+
+        fun getResetMinuteKey(): String {
+            return KEY_RESET_MINUTE
         }
     }
 
@@ -37,6 +47,7 @@ class AdditionCalculatorWidget : AppWidgetProvider() {
         appWidgetIds: IntArray
     ) {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
+        MidnightResetReceiver.schedule(context.applicationContext)
         for (appWidgetId in appWidgetIds) {
             updateWidget(context, appWidgetManager, appWidgetId)
         }
@@ -100,6 +111,7 @@ class AdditionCalculatorWidget : AppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
+        MidnightResetReceiver.schedule(context.applicationContext)
         val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
         if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             return

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MasterCalories</string>
+    <string name="settings_title">Settings</string>
+    <string name="reset_time_label">Daily reset time</string>
+    <string name="save">Save</string>
+    <string name="reset_time_saved">Reset time saved</string>
 </resources>
